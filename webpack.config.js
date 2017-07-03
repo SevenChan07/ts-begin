@@ -1,5 +1,13 @@
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
+const HOST = '0.0.0.0'
+const PORT = 3000
+
 module.exports = {
+    devServer: {
+        inline: true,
+        port: PORT,
+    },
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
@@ -13,6 +21,8 @@ module.exports = {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
+    
+    plugins:[new webpack.HotModuleReplacementPlugin()],
 
     module: {
         rules: [
